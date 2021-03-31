@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类中方法this的指向</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    class Person{
+        constructor(name,page) {
+            this.name = name
+            this.page = page
+        }
+
+        speek(){
+            console.log(this)
+        }
+
+    }
+
+    const p1 = new Person('ss',22);
+    p1.speek() //通过实例调用speek方法
+    const x = p1.speek
+    x()
+</script>
+</html>

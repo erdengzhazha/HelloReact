@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--  yi  -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>hello_react.html</title>
+</head>
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<body>
+<!--  准备好一个容器  -->
+<div id="test">
+
+</div>
+
+</body>
+<script type="text/babel">
+    //1. 创建类式组建
+    class MyComponent extends React.Component{
+
+        state = {
+            isHot: false,
+            wind: '微风'
+        }
+        // 构造器调用1次
+        constructor(props) {
+            super(props);
+        }
+
+        render(){
+            console.log(this)
+            // 解构表达式
+            const {isHot,wind} = this.state
+            return <h1 onClick={this.changeWeather}>jdjskjsk{isHot?'炎热':'凉爽'},{wind}</h1>
+        }
+
+        changeWeather =() =>{
+            console.log(this)
+            const x = !this.state.isHot
+            this.setState({
+                isHot : x,
+                wind: 'xx'
+            })
+            console.log(`isHot ${this.state.isHot}`)
+        }
+    }
+    //2. 渲染组建到页面
+    ReactDOM.render(<MyComponent/>,document.getElementById('test'))
+
+
+
+    /**
+     *  执行了ReactDOM.render(<xxx/>,document.getElementById)，发生了什么？
+     *  1。 React解析组件标签， 找到了MyComponent组件
+     *  2。 发现组件是使用类定义的，随后实例该类，将返回的虚拟DOM，转为真实DOM，随后呈现在页面中。
+     *
+     * */
+</script>
+
+</html>

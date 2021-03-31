@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //创建一个Person类
+        class Person{
+            // 构造方法
+            constructor(name,age) {
+                // 构造器的this是谁？  类的实例对象
+                this.name = name
+                this.age = age
+            }
+            // 人的行为
+            speek(){
+                console.log( `我叫${this.name},我年龄是${this.age}`)
+            }
+        }
+        //创建一个Person实例对象
+        const p1 = new Person('tom',18)
+        const p2 = new Person('ss',33)
+        // console.log(p1.speek())
+        // console.log(p2.speek())
+        p1.speek.call({name:1,age:2}) // call能改变 p1 的this指向
+    </script>
+</body>
+</html>
